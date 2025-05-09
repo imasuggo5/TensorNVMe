@@ -17,7 +17,7 @@ def check_uring_compatibility():
     uname_info = uname()
     if uname_info.system != "Linux":
         raise RuntimeError("Only Linux is supported")
-    kernel_version = version.parse(uname_info.release.split("-")[0])
+    kernel_version = version.parse(uname_info.release.split("-")[0].replace("+", ""))
     return kernel_version >= version.parse("5.10")
 
 
